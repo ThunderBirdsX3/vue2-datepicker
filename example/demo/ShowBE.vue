@@ -31,6 +31,24 @@
       format="DD MMM YY hh:mm:ss"
       :show-be-year="true"
     ></date-picker>
+
+    <date-picker
+      v-model="value5"
+      placeholder="ระบุเดือน"
+      format="MMM YY"
+      type="month"
+      :show-be-year="true"
+      range
+    ></date-picker>
+
+    <date-picker
+      v-model="value5"
+      placeholder="ระบุเดือน"
+      format="Y"
+      type="year"
+      :show-be-year="true"
+      range
+    ></date-picker>
   </div>
 </template>
 
@@ -43,6 +61,7 @@ export default {
       value2: new Date(),
       value3: new Date(),
       value4: new Date(),
+      value5: [new Date(), new Date()],
     };
   },
 };
