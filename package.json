@@ -11,7 +11,7 @@
     "/index.*",
     "/scss"
   ],
-  "version": "0.0.4",
+  "version": "0.0.5",
   "scripts": {
     "dev": "parcel ./example/dev.html --open --port 2235",
     "build:index": "cross-env NODE_ENV=production rollup -c",
@@ -49,8 +49,7 @@
   },
   "dependencies": {
     "date-fns": "^2.0.1",
-    "date-format-parse": "^0.2.5",
-    "moment": "^2.29.1"
+    "date-format-parse": "^0.2.5"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
