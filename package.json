@@ -1,5 +1,5 @@
 {
-  "name": "vue2-datepicker",
+  "name": "tbs-vue-datepicker",
   "description": "A Datepicker Component For Vue2",
   "main": "index.js",
   "module": "index.esm.js",
