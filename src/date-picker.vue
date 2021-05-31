@@ -298,21 +298,28 @@ export default {
       }
       const fmt = this.format;
       if (Array.isArray(this.innerValue)) {
-        return this.innerValue.map(v => this.formatDate(v, fmt)).join(this.rangeSeparator);
+        return this.innerValue.map(v => {
+          let text = this.formatDate(v, fmt);
+          if (this.showBeYear) {
+            const yearFormat = fmt.match(/[Y]+/);
+            const date = new Date(v);
+            text = fmt.replace(
+              yearFormat,
+              this.formatDate(date.setFullYear(v.getFullYear() + 543), yearFormat),
+            );
+            text = this.formatDate(date, text);
+          }
+          return text;
+        }).join(this.rangeSeparator);
       }
       let text = this.formatDate(this.innerValue, fmt);
       if (this.showBeYear) {
-        const dayFormat = fmt.match(/[D]+/);
-        const monthFormat = fmt.match(/[M]+/);
         const yearFormat = fmt.match(/[Y]+/);
         const date = new Date(this.innerValue);
-        text = fmt
-          .replace(dayFormat, this.formatDate(date, dayFormat))
-          .replace(monthFormat, this.formatDate(date, monthFormat))
-          .replace(
-            yearFormat,
-            this.formatDate(date.setFullYear(this.innerValue.getFullYear() + 543), yearFormat)
-          );
+        text = fmt.replace(
+          yearFormat,
+          this.formatDate(date.setFullYear(this.innerValue.getFullYear() + 543), yearFormat),
+        );
         text = this.formatDate(this.innerValue, text);
       }
       return text;
